@@ -30,7 +30,7 @@ def decode_message_stream(
 
 def save_records_to_sqlite(records: list[dict[str, Any]], db_path: str) -> None:
     """选做：保存接收记录，None必须写为NULL。"""
-    raise NotImplementedError("M3选做：按optional_db_schema.sql实现写入、读取和简单查询。")
+    raise RuntimeError("本次实验未启用SQLite选做功能。")
 
 
 def build_tracks(
