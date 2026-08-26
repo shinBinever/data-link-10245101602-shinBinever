@@ -1,0 +1,3 @@
+﻿record_no,target_id,stage,field,problem_type,value,description
+4,780bad,parse,timestamp,REQUIRED_FIELD_MISSING,,time_position和last_contact不能同时为空
+5,780bee,parse,heading,OUT_OF_RANGE,,"heading超出范围[0.0, 359.99]"
