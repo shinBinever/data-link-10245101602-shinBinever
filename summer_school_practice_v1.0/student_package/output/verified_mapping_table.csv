@@ -1,0 +1,9 @@
+﻿source_format,input_field,unified_field,mapping_rule,unit_conversion,null_strategy,evidence,verified
+OpenSky,target_id,track_id,转为六位小写十六进制字符串并保留前导0,无,必需字段；缺失则拒绝记录,source_field_definitions.md: track_id,true
+OpenSky,latest_time,timestamp,正整数Unix秒直接映射,无,缺失或非正整数时time_valid=false,source_field_definitions.md: timestamp,true
+TeachingLink,latitude_code+validity_flags.bit0,position.lat,bit0有效时按22位纬度公式恢复,code/(2^22-1)*180-90 degree,bit0=0时为null,source_field_definitions.md: position.lat,true
+TeachingLink,longitude_code+validity_flags.bit1,position.lon,bit1有效时按22位经度公式恢复,code/(2^22-1)*360-180 degree,bit1=0时为null,source_field_definitions.md: position.lon,true
+TeachingLink,altitude_code+validity_flags.bit2,position.alt,bit2有效时恢复物理高度,code-1000 meter,bit2=0时为null,source_field_definitions.md: position.alt,true
+TeachingLink,callsign+validity_flags.bit6,identity.callsign,bit6有效时去除补0和首尾空白,无,bit6=0或清理后为空时为null,source_field_definitions.md: identity.callsign,true
+TeachingLink,status_flags.bit2,quality.time_source,"0=position_time, 1=last_contact_fallback",无,状态位缺失时不得推断,source_field_definitions.md: quality.time_source,true
+TeachingLink,message_valid,quality.message_valid,仅表示完整帧接收判据是否通过,转为boolean,缺失时为false,source_field_definitions.md: quality.message_valid,true
